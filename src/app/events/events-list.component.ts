@@ -7,7 +7,14 @@ import { Component } from '@angular/core';
     <h1>UpComming Angualr Events</h1>
   </div>
   <hr>
-  <event-thumbnail [event]="event1"></event-thumbnail>
+  <event-thumbnail
+    #thumbnail
+    [event]="event1"
+    (eventClick)="handlerEventClicked($event)"
+  >
+  </event-thumbnail>
+  <h3>{{ thumbnail.someProperty }}</h3>
+  <button class="btn btn-primary" (click)="thumbnail.testLog()">Template Variable Example</button>
   `
 })
 export class EventsListComponent {
@@ -23,5 +30,10 @@ export class EventsListComponent {
       city: 'London',
       country: 'England'
     }
+  };
+
+  handlerEventClicked(data) {
+    console.log('Received data:: ', data);
+
   }
 }
