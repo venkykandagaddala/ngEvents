@@ -9,27 +9,24 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <div>Time: {{event.time}}</div>
     <div>Price: \${{event.price}}</div>
     <div>
-      <span>Location: {{ event.location.address }}</span>&nbsp;&nbsp;
-      <span>{{ event.location.city }}</span>,
-      <span>{{ event.location.country | uppercase }}</span>
-    </div>
-    <div>
-      <button class='btn btn-success' (click)="handlerClickMe()">Click me!</button>
+      <span>Location: {{ event.location.address }}</span>
+      <span class="pad-left">{{ event.location.city }}
+        {{ event.location.country | uppercase }}
+      </span>
     </div>
   </div>
-  `
+  `,
+  styles: [`
+    .pad-left { margin-left: 20px;}
+    .well div { color: #bbb}
+  `]
 })
 export class EventThumbnailComponent {
   @Input() event: any;
   @Output() eventClick = new EventEmitter();
-  someProperty: string = 'Child property...';
 
   handlerClickMe() {
     console.log('Child Componet::', this.event.name);
     this.eventClick.emit(this.event.name);
   }
-  testLog() {
-    console.log('From Child component....');
-  }
-
 }

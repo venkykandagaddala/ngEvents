@@ -13,8 +13,6 @@ import { Component } from '@angular/core';
     (eventClick)="handlerEventClicked($event)"
   >
   </event-thumbnail>
-  <h3>{{ thumbnail.someProperty }}</h3>
-  <button class="btn btn-primary" (click)="thumbnail.testLog()">Template Variable Example</button>
   `
 })
 export class EventsListComponent {
