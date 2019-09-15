@@ -3,14 +3,15 @@ import { Router } from "@angular/router";
 
 @Component({
   template: `
-    <div class='row'>
+    <div>
       <h1>Create New Event </h1>
     </div>
     <hr>
-    <div class='row'>
+    <div>
       <h2>Implementation goes here....</h2>
     </div>
-    <div class='row'>
+    <br>
+    <div>
       <button class='btn btn-success'>Save</button> &nbsp;
       <button class='btn btn-warning' (click)="handlerClick()">Cancel</button>
     </div>
