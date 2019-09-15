@@ -35,6 +35,6 @@ export class EventsListComponent implements OnInit {
   }
 
   HangleOnClickToastr(eventName) {
-    this.toastrService.success(eventName);
+    this.toastrService .success(eventName);
   }
 }

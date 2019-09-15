@@ -318,4 +318,8 @@ export class EventService {
     return this.EVENTS;
   }
 
+  getEvent(id: number) {
+    return this.EVENTS.find(event => event.id === id);
+  }
+
 }
