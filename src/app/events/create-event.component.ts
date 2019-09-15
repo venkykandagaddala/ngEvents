@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
     <div class='row'>
       <h1>Create New Event </h1>
     </div>
+    <hr>
     <div class='row'>
       <h2>Implementation goes here....</h2>
     </div>
@@ -17,6 +18,7 @@ import { Router } from "@angular/router";
 })
 export class CreateEventComponent {
 
+  isDirty: boolean = true;
   constructor(private router: Router) {}
   handlerClick() {
     this.router.navigate(['/events']);
