@@ -10,6 +10,7 @@ import {
   EventsListResolver,
   EventRouteActivator
 
+
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
