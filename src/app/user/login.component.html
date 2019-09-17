@@ -9,14 +9,28 @@
       <em *ngIf='loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)'>
         Required
       </em>
-      <input (ngModel)="userName" name="userName" id="userName" type="text" required class="form-control"/>
+      <input
+      (ngModel)="userName"
+      name="userName"
+      id="userName"
+      type="text"
+      required
+      class="form-control"
+      [class.field-error]='loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)'/>
     </div>
     <div class="form-group" >
       <label for="password">Password:</label>
       <em *ngIf='loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)'>
         Required
       </em>
-      <input id="password"(ngModel)="password" name="password" type="password" required class="form-control"/>
+      <input
+        id="password"
+        (ngModel)="password"
+        name="password"
+        type="password"
+        required
+        class="form-control"
+        [class.field-error]='loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)'/>
     </div>
     <span (mouseenter)='mouseoverLogin=true' (mouseleave)='mouseoverLogin=false'>
       <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>

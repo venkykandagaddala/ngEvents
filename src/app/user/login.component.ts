@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styles: [
     `
       em { color: red; float: right;}
+      .field-error { border: 1px solid red}
     `
   ]
 })
