@@ -2,31 +2,43 @@
   <h1>Edit Your Profile </h1>
   <hr>
   <div class="col-md-4">
-    <form autocomplete="off"
-      novalidate
-      [formGroup]='profileForm'
-      (ngSubmit)='submitProfile(profileForm.value)'
-     >
-      <div class="form-group">
+    <form [formGroup]="profileForm"
+      (ngSubmit)='saveProfile(profileForm.value)'
+      autocomplete="off" novalidate >
+      <div class="form-group" [ngClass]=" {'error' : !validateFirstName() }">
         <label for="firstName">First Name:</label>
-        <em *ngIf='!validateFirstName'>Required</em>
-        <input id="firstName"
-          formControlName='firstName'
-          type="text"
-          class="form-control"
-          placeholder="First Name..." />
+        <em
+          *ngIf='profileForm.controls.firstName.invalid &&
+            profileForm.controls.firstName.touched &&
+            profileForm.controls.firstName.errors.required'>
+          *Required
+        </em>
+        <em
+          *ngIf='profileForm.controls.firstName.invalid &&
+            profileForm.controls.firstName.touched &&
+            profileForm.controls.firstName.errors.minlength'>
+          *lenght must be minimum 6 character
+        </em>
+
+        <input id="firstName" formControlName="firstName" type="text" class="form-control" placeholder="First Name..." />
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error' : !validateLastName() }">
         <label for="lastName">Last Name:</label>
-        <em *ngIf='!validateLastName'>Required</em>
-        <input id="lastName"
-          formControlName="lastName"
-          type="text"
-          class="form-control"
-          placeholder="Last Name..." />
+        <em *ngIf='profileForm.controls.lastName.invalid &&
+            profileForm.controls.lastName.touched &&
+            profileForm.controls.lastName.errors.pattern'>
+          *Required
+        </em>
+        <em *ngIf='profileForm.controls.lastName.invalid &&
+            profileForm.controls.lastName.touched &&
+            profileForm.controls.lastName.errors.pattern'>
+          *must be start with alphabets.
+        </em>
+        <input id="lastName" formControlName="lastName"  type="text" class="form-control" placeholder="Last Name..." />
       </div>
-      <button type="submit" class="btn btn-primary" >Save</button>
-      <button type="button" class="btn btn-default" (click)='handlerClick()'>Cancel</button>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-default" (click)='cancle()'>Cancel</button>
     </form>
   </div>
 </div>
