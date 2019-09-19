@@ -1,27 +1,34 @@
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
+import { ToastrService } from '../common/toastr.service';
+import { EventService } from './shared';
 
 @Component({
-  template: `
-    <div>
-      <h1>Create New Event </h1>
-    </div>
-    <hr>
-    <div>
-      <h2>Implementation goes here....</h2>
-    </div>
-    <br>
-    <div>
-      <button class='btn btn-success'>Save</button> &nbsp;
-      <button class='btn btn-warning' (click)="handlerClick()">Cancel</button>
-    </div>
-  `
+  templateUrl: './create.event.component.html',
+  styles: [
+    `
+      em { color: red; float: right;}
+      .error input { background-color: #E3C3C5;}
+    `
+  ]
 })
 export class CreateEventComponent {
 
   isDirty: boolean = true;
-  constructor(private router: Router) {}
+  newEvent;
+  newEventForm;
+  constructor(
+    private router: Router,
+    private toastr: ToastrService,
+    private eventService: EventService
+  ) {}
   handlerClick() {
     this.router.navigate(['/events']);
+  }
+  saveEvent(formValues) {
+    this.eventService.saveEvent(formValues);
+    this.isDirty = false;
+    this.toastr.success('Successfully created the new event.');
+    this.router.navigate(['events']);
   }
 }
