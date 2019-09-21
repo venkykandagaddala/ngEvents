@@ -8,23 +8,27 @@ import { ISession } from '../shared';
     `
       em { color: red; float: right;}
       .error input { background-color: #E3C3C5;}
+      .error textarea { background-color: #E3C3C5}
     `
   ]
 })
 export class CreateSessionComponent implements OnInit {
   newSessionForm: FormGroup;
-  presenter: FormControl;
   name: FormControl;
-  abstract: FormControl;
+  presenter: FormControl;
   duration: FormControl;
   level: FormControl;
+  abstract: FormControl;
 
   ngOnInit() {
     this.name = new FormControl('', Validators.required);
     this.presenter = new FormControl('', Validators.required);
     this.duration = new FormControl('', Validators.required);
     this.level = new FormControl('', Validators.required);
-    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(10)]);
+    this.abstract = new FormControl('', [Validators.required,
+      Validators.maxLength(10),
+      this.restrictedWords]
+    );
     this.newSessionForm = new FormGroup({
       name: this.name,
       presenter: this.presenter,
@@ -44,6 +48,10 @@ export class CreateSessionComponent implements OnInit {
       voters: []
     };
     console.log(session);
+  }
+
+  restrictedWords(control:  FormControl): {[key: string]: any} {
+    return  control.value.includes('com') ? {'restrictedWords': 'com'} : null;
   }
 }
 
