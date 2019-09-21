@@ -10,7 +10,8 @@ import {
   EventsListResolver,
   EventRouteActivator,
   CreateSessionComponent,
-  SessionListComponent
+  SessionListComponent,
+  DurationPipe
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -40,7 +41,8 @@ import { CollapsableWellComponent } from './common/collapsable-well.component';
     NavbarComponent,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsableWellComponent
+    CollapsableWellComponent,
+    DurationPipe
   ],
   bootstrap: [EventsAppComponent],
   providers: [
