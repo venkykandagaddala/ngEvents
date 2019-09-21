@@ -17,6 +17,7 @@ import { IEvent, ISession } from '../shared/index';
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   newMode: boolean = false;
+  filterBy: string = "all";
   constructor(private eventService: EventService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
