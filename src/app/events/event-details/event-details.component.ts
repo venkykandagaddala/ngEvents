@@ -18,6 +18,7 @@ export class EventDetailsComponent implements OnInit {
   event: IEvent;
   newMode: boolean = false;
   filterBy: string = "all";
+  sortBy: string = 'name';
   constructor(private eventService: EventService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
