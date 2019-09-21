@@ -1,10 +1,20 @@
 <div class="row" *ngFor="let session of sessions">
   <div class="col-md-12">
-    <collapsable-well [title]="session?.name">
+    <collapsable-well>
+      <div well-title>
+        {{session.name}}
+        <i *ngIf="session.voters.length > 3" class="glyphicon glyphicon-fire" style='color: red'></i>
+      </div>
+      <div well-body>
         <h6>{{session.presenter}}</h6>
         <span>Duration: {{session.duration}}</span><br />
         <span>Level: {{session.level}}</span>
         <p>{{session.abstract}}</p>
+        <p *ngIf="session.voters.length > 0">
+          <i class="glyphicon glyphicon-user"></i>
+          Voters: {{ session.voters.join(",") }}
+        </p>
+      </div>
     </collapsable-well>
   </div>
 </div>
