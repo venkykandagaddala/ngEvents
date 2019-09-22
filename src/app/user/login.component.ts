@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { ToastrService } from '../common/toastr.service';
+import { TOASTR_TOKEN, IToastr } from '../common/toastr.service';
 
 @Component({
   templateUrl: './login.component.html',
@@ -19,7 +19,7 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService) {}
+    @Inject(TOASTR_TOKEN) private toastr: IToastr) {}
 
   loginFormSubmit(formValues) {
     this.authService.loginUser(formValues.email, formValues.password);

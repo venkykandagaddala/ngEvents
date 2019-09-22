@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from "@angular/router";
-import { ToastrService } from '../common/toastr.service';
+import { TOASTR_TOKEN, IToastr } from '../common/toastr.service';
 import { EventService } from './shared';
 
 @Component({
@@ -19,7 +19,7 @@ export class CreateEventComponent {
   newEventForm;
   constructor(
     private router: Router,
-    private toastr: ToastrService,
+    @Inject(TOASTR_TOKEN) private toastr: IToastr,
     private eventService: EventService
   ) {}
   handlerClick() {
