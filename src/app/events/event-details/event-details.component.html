@@ -27,7 +27,7 @@
   <div class="col-md-2">
       <b>Sessions</b>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8" *ngIf='event.sessions.length > 0'>
     <div class="btn-group btn-group-sm" style="margin-right: 25px;">
       <button class="btn btn-default"
         [class.active]="sortBy==='name'"
