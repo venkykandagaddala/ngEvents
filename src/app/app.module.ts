@@ -11,7 +11,9 @@ import {
   EventRouteActivator,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  VoterService
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -52,11 +54,13 @@ let jQuery = window['$'];
     CollapsableWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   bootstrap: [EventsAppComponent],
   providers: [
     EventService,
+    VoterService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
     EventRouteActivator,
