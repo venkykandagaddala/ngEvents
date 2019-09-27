@@ -32,6 +32,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './events/error-404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 let toastr: IToastr = window['toastr'];
 let jQuery = window['$'];
@@ -40,6 +41,7 @@ let jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
