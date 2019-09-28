@@ -37,4 +37,10 @@
     </span>
     <button type="button"(click)="handlerClick()" class="btn btn-default">Cancel</button>
   </form>
+  <br>
+  <div *ngIf='invalidLoginStatus'>
+    <div class="alert alert-danger" role="alert">
+      Invalid username and password.
+    </div>
+  </div>
 </div>

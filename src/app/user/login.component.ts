@@ -16,15 +16,23 @@ export class LoginComponent {
   login: string;
   password: string;
   mouseoverLogin: boolean;
+  invalidLoginStatus: boolean = false;
   constructor(
     private authService: AuthService,
     private router: Router,
     @Inject(TOASTR_TOKEN) private toastr: IToastr) {}
 
   loginFormSubmit(formValues) {
-    this.authService.loginUser(formValues.email, formValues.password);
-    this.toastr.success('successfully signedup.');
-    this.router.navigate(['events']);
+    this.authService.loginUser(formValues.userName , formValues.password)
+      .subscribe(resp => {
+        if (!resp) {
+          this.invalidLoginStatus = true;
+          this.toastr.error('Invalid username and password.');
+        } else {
+          this.toastr.success('successfully signedup.');
+          this.router.navigate(['events']);
+        }
+      });
   }
 
   handlerClick() {
