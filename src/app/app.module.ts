@@ -8,13 +8,13 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   EventsListResolver,
-  EventRouteActivator,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
   VoterService,
-  ValidateloactionDirective
+  ValidateloactionDirective,
+  EventResolver
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -60,6 +60,7 @@ let jQuery = window['$'];
     ModalTriggerDirective,
     UpvoteComponent,
     ValidateloactionDirective
+
   ],
   bootstrap: [EventsAppComponent],
   providers: [
@@ -67,8 +68,8 @@ let jQuery = window['$'];
     VoterService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    EventRouteActivator,
     EventsListResolver,
+    EventResolver,
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',
