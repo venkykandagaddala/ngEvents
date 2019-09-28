@@ -33,8 +33,16 @@ export class AuthService {
     return !!this.currentUser;
   }
 
+  logout() {
+    this.currentUser = undefined;
+    const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.post('/api/logout', {}, options);
+  }
+
   updateProfile(firstName: string, lastName: string) {
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
+    const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options);
   }
 }

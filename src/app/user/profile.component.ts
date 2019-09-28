@@ -36,9 +36,11 @@ export class ProfileComponent implements OnInit {
   }
   saveProfile(formValues) {
     if (this.profileForm.valid) {
-      this.auth.updateProfile(formValues.firstName, formValues.lastName);
-      this.router.navigate(['events']);
-      this.toastr.success('Successfully updated the profile.');
+      this.auth.updateProfile(formValues.firstName, formValues.lastName)
+      .subscribe(() => {
+        this.router.navigate(['events']);
+        this.toastr.success('Successfully updated the profile.');
+      });
     } else {
       this.toastr.error('Please add missing fields.');
     }
@@ -46,6 +48,11 @@ export class ProfileComponent implements OnInit {
 
   cancle() {
     this.router.navigate(['events']);
+  }
+
+  logout() {
+    this.auth.logout().subscribe();
+    this.router.navigate(['/user/login']);
   }
 
   validateFirstName() {
