@@ -44,7 +44,7 @@ export class CreateSessionComponent implements OnInit {
     });
   }
   saveSession(forvalues) {
-    let session: ISession = {
+    const session: ISession = {
       id: undefined,
       name: forvalues.name,
       presenter: forvalues.presenter,
@@ -54,7 +54,7 @@ export class CreateSessionComponent implements OnInit {
       voters: []
     };
     this.saveNewSession.emit(session);
-    this.toastr.success("Successfully created the new session.");
+    this.toastr.success('Successfully created the new session.');
   }
 
   restrictedWords(control:  FormControl): {[key: string]: any} {

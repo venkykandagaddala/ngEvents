@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { TOASTR_TOKEN, IToastr } from '../common/toastr.service';
 import { EventService } from './shared';
 
@@ -14,7 +14,7 @@ import { EventService } from './shared';
 })
 export class CreateEventComponent {
 
-  isDirty: boolean = true;
+  isDirty = true;
   newEvent;
   newEventForm;
   constructor(

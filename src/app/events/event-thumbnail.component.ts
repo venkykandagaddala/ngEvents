@@ -47,7 +47,7 @@ export class EventThumbnailComponent {
     this.eventClick.emit(this.event.name);
   }
   getStartTimeClass() {
-    const isClass = this.event.time === '9:00 am'
+    const isClass = this.event.time === '9:00 am';
     return {green: isClass, bold: isClass};
   }
   getStartTimeStyle(): any {

@@ -34,8 +34,8 @@ import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-let toastr: IToastr = window['toastr'];
-let jQuery = window['$'];
+const toastr: IToastr = window['toastr'];
+const jQuery = window['$'];
 @NgModule({
   imports: [
     BrowserModule,
